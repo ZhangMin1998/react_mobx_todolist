@@ -8,10 +8,14 @@ function Task() {
 
   // 单选受控
   // 用mobx store去维护选择状态
-
   function onChange (e, id) {
     // console.log(e.target.checked, id)
     store.taskStore.singleCheck(id, e.target.checked)
+  }
+  // 全选
+  function allChange (e) {
+    // console.log(e)
+    store.taskStore.allCheck(e.target.checked)
   }
 
   return (
@@ -31,6 +35,8 @@ function Task() {
           id="toggle-all"
           className="toggle-all"
           type="checkbox"
+          checked={store.taskStore.isAll}
+          onChange={allChange}
         />
         <label htmlFor="toggle-all"></label>
         <ul className="todo-list">
