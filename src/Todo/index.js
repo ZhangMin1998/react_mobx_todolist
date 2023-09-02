@@ -1,7 +1,8 @@
 import './index.css'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../store'
-// import { useState } from 'react'
+import { useState } from 'react'
+import uuid from 'react-uuid'
 
 function Task() {
   const store = useStore()
@@ -22,6 +23,19 @@ function Task() {
     // console.log(e, id)
     store.taskStore.deleteTask(id)
   }
+  // 新增   受控
+  const [taskValue, setTaskValue] = useState('')
+  function addTask (e) {
+    // console.log(e.keyCode)
+    if (e.keyCode === 13) {
+      store.taskStore.addTask({
+        id: uuid(),
+        name: taskValue,
+        isDone: false
+      })
+      setTaskValue('')
+    }
+  }
 
   return (
     <section className="todoapp">
@@ -32,6 +46,9 @@ function Task() {
           autoFocus
           autoComplete="off"
           placeholder="What needs to be done?"
+          value={taskValue}
+          onChange={(e) => setTaskValue(e.target.value)}
+          onKeyUp={addTask}
         />
       </header>
 
