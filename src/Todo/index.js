@@ -93,3 +93,14 @@ function Task() {
 }
 
 export default observer(Task)
+
+// mobx和react职责划分
+
+// mobx
+// 1.业务状态数据
+// 2.业务状态的修改逻辑
+
+// react
+// 1.渲染业务数据
+// 2.ui临时状态保护
+// 3.事件触发，调用mobx
