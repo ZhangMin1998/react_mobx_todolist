@@ -5,7 +5,7 @@ class TaskStore {
     {
       id:1,
       name: '学习react',
-      isDone: true
+      isDone: false
     },
     {
       id:2,

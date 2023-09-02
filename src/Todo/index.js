@@ -1,9 +1,12 @@
 import './index.css'
+import { useStore } from '../store'
+
 function Task() {
+  const store = useStore()
   return (
     <section className="todoapp">
       <header className="header">
-        <h1>todos</h1>
+        <h1>todoList</h1>
         <input
           className="new-todo"
           autoFocus
@@ -11,6 +14,7 @@ function Task() {
           placeholder="What needs to be done?"
         />
       </header>
+
       <section className="main">
         <input
           id="toggle-all"
@@ -19,24 +23,20 @@ function Task() {
         />
         <label htmlFor="toggle-all"></label>
         <ul className="todo-list">
-          <li
-            className="todo"
-          >
-            <div className="view">
-              <input className="toggle" type="checkbox" />
-              <label >learn react</label>
-              <button className="destroy"></button>
-            </div>
-          </li>
-          <li
-            className="todo completed"
-          >
-            <div className="view">
-              <input className="toggle" type="checkbox" defaultChecked={true}/>
-              <label >learn react</label>
-              <button className="destroy"></button>
-            </div>
-          </li>
+          {
+            store.taskStore.list.map(item => (
+              <li
+                key={item.id}
+                className={item.isDone ? 'todo completed' : 'todo'}
+              >
+                <div className="view">
+                  <input className="toggle" type="checkbox" defaultChecked={item.isDone}/>
+                  <label >{item.name}</label>
+                  <button className="destroy"></button>
+                </div>
+              </li>
+            ))
+          }
         </ul>
       </section>
     </section>
