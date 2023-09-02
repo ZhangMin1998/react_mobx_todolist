@@ -17,6 +17,15 @@ class TaskStore {
     makeAutoObservable(this)
   }
 
+  // 计算属性 只有都选中才是全选中状态
+  get isAll () {
+    return this.list.every(item => item.isDone)
+  }
+  // 已完成
+  get isFinished () {
+    return this.list.filter(item => item.isDone).length
+  }
+
   // 单选
   singleCheck (id, isDone) {
     const item = this.list.find(item => item.id === id)
@@ -27,10 +36,6 @@ class TaskStore {
     this.list.forEach(item => {
       item.isDone = checked
     })
-  }
-  // 计算属性 只有都选中才是全选中状态
-  get isAll () {
-    return this.list.every(item => item.isDone)
   }
   // 删除
   deleteTask = (id) => {

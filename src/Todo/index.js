@@ -83,6 +83,11 @@ function Task() {
           }
         </ul>
       </section>
+      <footer className='footer'>
+        <span className='todo-count'>
+          任务总数： {store.taskStore.list.length} 已完成：{store.taskStore.isFinished}
+        </span>
+      </footer>
     </section>
   )
 }
