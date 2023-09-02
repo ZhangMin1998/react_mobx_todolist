@@ -32,5 +32,9 @@ class TaskStore {
   get isAll () {
     return this.list.every(item => item.isDone)
   }
+  // 删除
+  deleteTask = (id) => {
+    this.list = this.list.filter(item => item.id !== id)
+  }
 }
 export default TaskStore

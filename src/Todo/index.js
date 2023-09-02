@@ -17,6 +17,11 @@ function Task() {
     // console.log(e)
     store.taskStore.allCheck(e.target.checked)
   }
+  // 删除
+  function deleteTask (id) {
+    // console.log(e, id)
+    store.taskStore.deleteTask(id)
+  }
 
   return (
     <section className="todoapp">
@@ -54,7 +59,7 @@ function Task() {
                     onChange={e => onChange(e, item.id)}
                   />
                   <label >{item.name}</label>
-                  <button className="destroy"></button>
+                  <button className="destroy" onClick={() => deleteTask(item.id)}></button>
                 </div>
               </li>
             ))
