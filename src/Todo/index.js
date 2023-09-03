@@ -27,7 +27,7 @@ function Task() {
   const [taskValue, setTaskValue] = useState('')
   function addTask (e) {
     // console.log(e.keyCode)
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && taskValue !== '') {
       store.taskStore.addTask({
         id: uuid(),
         name: taskValue,
