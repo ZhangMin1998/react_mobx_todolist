@@ -14,7 +14,7 @@ class TaskStore {
     }
   ]
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this) // 响应式处理
   }
 
   // 计算属性 只有都选中才是全选中状态

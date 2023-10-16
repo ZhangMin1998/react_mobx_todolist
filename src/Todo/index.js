@@ -92,7 +92,7 @@ function Task() {
   )
 }
 
-export default observer(Task)
+export default observer(Task) // 包裹组件让视图响应数据变化
 
 // mobx和react职责划分
 
